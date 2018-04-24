@@ -19,12 +19,27 @@ class IndexController extends BaseController {
 
     public function getcontent() {
         $time = I('post.time');
+        $username = I('post.username');
         $d = new Date($time);
         if ($d->parse($time) > time()){
            $this->ajaxReturn(array(
                'status' => 403,
                'info' => '非法时间'
            ));
+        }
+        $strs = array(
+            '操你妈',
+            '妈的',
+            '我日'
+        );
+        foreach ($strs as $str) {
+            if (mb_stripos($username, $str, 0, "utf-8mb4") >= 0) {
+                $this->ajaxReturn(array(
+                    'status' => 403,
+                    'info' => '非法字符'
+                ));
+                return;
+            }
         }
         $year = $d->format("%Y");
         $event = M('event')->where(array('year' => $year))->getField('event');
