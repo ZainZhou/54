@@ -1,12 +1,18 @@
 @font-face {
   font-family: 'hkh';
-  src: url('fonts/hkh.ttf');
+  src: url('../fonts/hkh.ttf');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'mw';
-  src: url('fonts/mw.ttf');
+  src: url('../fonts/mw.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'syh';
+  src: url('../fonts/my.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -19,6 +25,11 @@ html,body{
   height: 100%;
   width: 100%;
   position: relative;
+}
+.font_hk{
+  font-family: hkh;
+  position: absolute;
+  visibility: hidden;
 }
 .purple{
   color: #874ad3;
@@ -36,19 +47,19 @@ html,body{
   color: #ecb61a;
 }
 .purple_back{
-  background: url("img/info_back/purple.jpg")center no-repeat;
+  background: url("../img/info_back/purple.jpg")center no-repeat;
 }
 .red_back{
-  background: url("img/info_back/red.jpg")center no-repeat;
+  background: url("../img/info_back/red.jpg")center no-repeat;
 }
 .green_back{
-  background: url("img/info_back/green.jpg")center no-repeat;
+  background: url("../img/info_back/green.jpg")center no-repeat;
 }
 .yellow_back{
-  background: url("img/info_back/yellow.jpg")center no-repeat;
+  background: url("../img/info_back/yellow.jpg")center no-repeat;
 }
 .blue_back{
-  background: url("img/info_back/blue.jpg")center no-repeat;
+  background: url("../img/info_back/blue.jpg")center no-repeat;
 }
 .loading{
   position: absolute;
@@ -78,25 +89,27 @@ html,body{
   }
   .info_title{
     text-align: center;
-    margin-top: 3.125em;
+    margin-top: 3.6em;
     span{
       display: inline-block;
-      font-family: hkh;
+      font-family: "syh";
+      font-weight: bold;
     }
     .first_l{
-      margin-bottom: 0.5em;
-      font-size: 2.5em;
+      font-size: 2.6em;
     }
     .second_l{
-      font-size: 2.125em;
+      margin-top: 2px;
+      font-size: 2.3em;
     }
   }
   .avatar{
     display: block;
-    margin: 1.25em auto;
+    margin: 1.2em auto;
+    margin-bottom: 0.3em;
     width: 5.625em;
     height: 5.625em;
-    background: red;
+    background: #FFFFFF;
     border-radius: 50%;
   }
   .nick_name{
@@ -106,21 +119,21 @@ html,body{
   .info_inputer{
     width: 70%;
     margin: 0 auto;
-    margin-top: 1em;
+    margin-top: 0.8em;
     border: none;
     height: 100px;
     font-size: 1.5em;
     span{
       display: inline-block;
-      font-size: 0.6em;
-      padding: 0.5em 0;
+      font-size: 0.55em;
+      padding: 0.2em 0;
     }
     input{
-      font-size: 14px;
+      font-size: 13px;
     }
   }
   .name_inputer{
-    padding: 0.5em 3%;
+    padding: 0.59em 3%;
     width: 94%;
     border-radius: 8px;
     margin-bottom: 0.8em;
@@ -130,7 +143,7 @@ html,body{
     position: relative;
   }
   #date_selector{
-    padding: 0.5em 3%;
+    padding: 0.59em 3%;
     width: 94%;
     border-radius: 8px;
     margin-bottom: 0.8em;
@@ -139,7 +152,6 @@ html,body{
   }
   #date_ghost{
     padding: 0.5em 2%;
-    font-family: mw;
     width: 96%;
     border-radius: 8px;
     margin-bottom: 0.8em;
@@ -149,21 +161,25 @@ html,body{
     opacity: 0;
   }
   #generate_btn{
-    width: 120px;
+    width: 140px;
     text-align: center;
     height: 35px;
     line-height: 35px;
-    border-radius: 8px;
+    border-radius: 7px;
     margin: 0 auto;
-    font-family: fz;
+    font-family: syh;
     margin-top: 70px;
     color: #ffffff;
+    font-size: 17px;
   }
   .copyright{
     text-align: center;
     font-size: 0.7em;
-    font-family: mw;
     margin-top: 2.2em;
+    .copy_fonts{
+      font-size: 1em;
+      font-family: mw;
+    }
   }
 }
 #canvas_page{
@@ -184,13 +200,14 @@ html,body{
 }
 @media (max-width: 340px) {
   #generate_info_page .info_title .first_l{
-    font-size: 2em;
+    font-size: 1.8em;
+    margin-bottom: 0;
   }
   #generate_info_page .info_title .second_l{
-    font-size: 1.8em;
+    font-size: 1.7em;
   }
   #generate_info_page .avatar{
-    margin: 1.1em auto;
+    margin: 1em auto;
     width: 5em;
     height: 5em;
   }

@@ -12,6 +12,7 @@ poster.prototype.init = function(b_src,texts,color,imgs){
   this.canvas.setAttribute('width',this.width);
   this.canvas.setAttribute('height',this.height);
   this.back_img = new Image();
+  this.back_img.crossOrigin="anonymous";
   this.back_img.src = b_src;
   var _this = this;
   this.back_img.onload = function(){
@@ -23,6 +24,7 @@ poster.prototype.loadImgs = function(){
     var counter = 0;
     for(var i = 0 ; i < this.imgs.length ; i++){
         var img = new Image();
+        img.crossOrigin="anonymous";
         var _this = this;
         img.src = _this.imgs[i].src;
         _this.imgs[i].src = img.src;
@@ -34,6 +36,7 @@ poster.prototype.loadImgs = function(){
                 }
             }
             if(counter == _this.imgs.length){
+                console.log("ok");
                 _this.drawImg();
             }
         }
@@ -69,9 +72,11 @@ poster.prototype.drawText = function(){
     h = this.drawLongText(this.texts.oath,this.width*0.1,h*1.02,this.width*0.8,"Microsoft YaHei",32,"#000000","left");
     ctx.stroke();
     ctx.restore();
+    console.log(1);
     var generate_img = new Image();
     var _imgSrc = this.canvas.toDataURL("image/png",1);
     generate_img.src = _imgSrc;
+    console.log(1);
     generate_img.onload = function(){
         $(_this.canvas).hide();
         $('#canvas_page').append($(this));
