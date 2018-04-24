@@ -127,7 +127,7 @@ $(function(){
     var date_selector = $('#date_selector');
     var copyright = $('.copyright');
     var colors = [{'type':'blue','color':'#4396de'},{'type':'red','color':'#dc4c47'},{'type':'yellow','color':'#ecb61a'},{'type':'purple','color':'#874ad3'},{'type':'green','color':'#3fc94b'}];
-    var imgs = [{'src':"img/tuan_logo.png",'width':w*0.19,'height':w*0.19,'x':w*0.18,'y':h*0.25,'type':'tuan'},{'src':"img/flag.png",'width':w*0.152,'height':h*0.045,'x':w*0.04,'y':h*0.026,'type':'flag'},{'src':"img/code.jpg",'width':w*0.213,'height':w*0.213,'x':w*0.7386,'y':h*0.83,'type':'code'}];
+    var imgs = [{'src':public_path+"img/tuan_logo.png",'width':w*0.19,'height':w*0.19,'x':w*0.18,'y':h*0.25,'type':'tuan'},{'src':public_path+"img/flag.png",'width':w*0.152,'height':h*0.045,'x':w*0.04,'y':h*0.026,'type':'flag'},{'src':public_path+"img/code.jpg",'width':w*0.213,'height':w*0.213,'x':w*0.7386,'y':h*0.83,'type':'code'}];
     var ghost_date = $('#date_ghost');
     var _data = {};
     var loading = $('.loading');
@@ -140,7 +140,7 @@ $(function(){
         onSet: function (event, inst) {
             var date_str = $(this).val().split("/");
             var date = date_str[0]+"年"+date_str[1]+"月"+date_str[2]+"日";
-            _data.time = date_str[0]+"-"+date_str[1]+"-"+date_str[2]+"-";
+            _data.time = date_str[0]+"-"+date_str[1]+"-"+date_str[2];
             date_selector.val(date);
         },
         onInit: function(event, inst){
@@ -152,7 +152,6 @@ $(function(){
     });
     colors = colors.sort(function(){return 0.5 - Math.random();});
     var color = colors[0].color;
-    var public_path = developer_info.attr('src');
     developer_info.attr('src',public_path + "img/info_"+colors[0].type+'.png');
     info_title.addClass(colors[0].type);
     info_inputers.css({'color':colors[0].color,'border':'1px solid'+colors[0].color});
@@ -162,21 +161,22 @@ $(function(){
     generate_btn.css('background',colors[0].color);
     generate_btn.on('click',function(){
         loading.show();
+        var name_inputer = $('.name_inputer');
         if(name_inputer.val() == ""){
             alert("姓名或网名不能为空!");
             return false
         }
         _data.username = name_inputer.val();
-        $.post("54/index.php/Home/Index/getcontent",_data,function(data){
+        $.post("/54/index.php/Home/Index/getcontent",_data,function(data){
             if(data.status == 200){
                 var avatar_json = {'src':avatar_src,'width':w*0.19,'height':w*0.19,'x':w*0.632,'y':h*0.25,'type':'avatar'};
                 imgs.push(avatar_json);
                 var texts = {'nickname':_data.username,'keyword':data.data.keyword,'event':data.data.event,'days':data.data.days,'oath':data.data.describe};
-                p.init("img/generate_back/"+colors[0].type+".jpg",texts,color,imgs);
-            }else if(data.status == 403){
+                p.init(public_path+"img/generate_back/"+colors[0].type+".jpg",texts,color,imgs);
+            }else if(data.status == 405){
                 alert("姓名或网名中存在敏感词,请重新输入!")
             }else{
-                alert(data.status);
+                alert(data.info);
             }
         });
     });

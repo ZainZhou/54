@@ -33,9 +33,9 @@ class IndexController extends BaseController {
             '我日'
         );
         foreach ($strs as $str) {
-            if (mb_stripos($username, $str, 0, "utf-8mb4") >= 0) {
+            if (stripos($username, $str) !== false) {
                 $this->ajaxReturn(array(
-                    'status' => 403,
+                    'status' => 405,
                     'info' => '非法字符'
                 ));
                 return;
