@@ -16,7 +16,7 @@ class BaseController extends Controller {
             $nickname = urldecode(I('get.nickname'));//'知识混子周政';//
         }
         if (!$openid  || !$nickname) {
-            $uri = 'https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/Api/Api/oauth&redirect='.urlencode('https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+            $uri = 'https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/Api/Api/oauth&redirect='.urlencode('https://'.$_SERVER['HTTP_HOST']. '/game' .$_SERVER['REQUEST_URI']);
             redirect($uri);
         }
         session('openid', $openid);
