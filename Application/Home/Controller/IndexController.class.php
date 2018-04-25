@@ -1,6 +1,6 @@
 <?php
 namespace Home\Controller;
-use Org\Util\String;
+use Org\Util\TPString;
 use Org\Util\Date;
 
 class IndexController extends BaseController {
@@ -56,7 +56,7 @@ class IndexController extends BaseController {
     }
 
     public function JSSDKSignature(){
-        $string = new String();
+        $string = new TPString();
         $jsapi_ticket =  $this->getTicket();
         $data['jsapi_ticket'] = $jsapi_ticket['data'];
         $data['noncestr'] = $string->randString();
@@ -113,7 +113,7 @@ class IndexController extends BaseController {
     }
 
     public function addtestdata(){
-        $string = new String();
+        $string = new TPString();
         $users = M('users');
         $ucq = M('user_current_question');
         for ($i=0;$i<120;$i++) {
