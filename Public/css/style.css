@@ -69,6 +69,55 @@ body {
   left: 40%;
   top: 40%;
 }
+.oMask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: #333333;
+  opacity: 0.3;
+  display: none;
+}
+.developer_info_container {
+  display: none;
+  width: 81%;
+  height: 43%;
+  position: absolute;
+  z-index: 9999;
+  background: #f6faf7;
+  border-radius: 5px;
+  left: 9.5%;
+  top: 25%;
+}
+.developer_info_container .relative_ghost {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.developer_info_container .relative_ghost .close_btn {
+  position: absolute;
+  left: 92%;
+  top: 5px;
+}
+.developer_info_container .relative_ghost .tips {
+  text-align: center;
+  font-size: 9px;
+  font-family: mw;
+  width: 100%;
+  position: absolute;
+  top: 92%;
+}
+.developer_info_container .relative_ghost .info_list {
+  font-family: mw;
+  text-align: center;
+  line-height: 28px;
+}
+.developer_info_container .relative_ghost .info_title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 6% 0;
+}
 #generate_info_page {
   visibility: hidden;
   width: 100%;
@@ -175,9 +224,11 @@ body {
   font-size: 17px;
 }
 #generate_info_page .copyright {
+  width: 100%;
+  position: absolute;
+  top: 95%;
   text-align: center;
   font-size: 0.7em;
-  margin-top: 2.2em;
 }
 #generate_info_page .copyright .copy_fonts {
   font-size: 1em;
@@ -201,16 +252,19 @@ body {
 }
 @media (max-width: 340px) {
   #generate_info_page .info_title .first_l {
-    font-size: 1.8em;
-    margin-bottom: 0;
+    font-size: 2em;
   }
   #generate_info_page .info_title .second_l {
-    font-size: 1.7em;
+    font-size: 1.8em;
   }
   #generate_info_page .avatar {
-    margin: 1em auto;
-    width: 5em;
-    height: 5em;
+    margin: 0.9em auto;
+    width: 4.7em;
+    height: 4.7em;
+  }
+  .developer_info_container .relative_ghost .info_title {
+    padding: 4% 0;
+    font-weight: 400;
   }
   #generate_info_page .info_inputer {
     margin-top: 0.2em;
@@ -222,9 +276,14 @@ body {
     margin-bottom: 0.45em;
   }
   #generate_info_page #generate_btn {
-    margin-top: 64px;
+    margin-top: 58px;
   }
-  #generate_info_page .copyright {
-    margin-top: 1em;
+}
+@media (min-width: 390px) {
+  #generate_info_page .info_title .first_l {
+    font-size: 3em;
+  }
+  #generate_info_page .info_title .second_l {
+    font-size: 2.7em;
   }
 }

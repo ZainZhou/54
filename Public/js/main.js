@@ -136,6 +136,18 @@ $(function(){
     var ghost_date = $('#date_ghost');
     var _data = {};
     var loading = $('.loading');
+    var oMask = $('.oMask');
+    var developer_info_container = $('.developer_info_container');
+    var close_btn = $('.close_btn');
+    var developer_info = $('.developer_info');
+    developer_info.on('click',function(){
+        developer_info_container.show();
+        oMask.show();
+    });
+    close_btn.on('click',function(){
+       developer_info_container.hide();
+        oMask.hide();
+    });
     ghost_date.mobiscroll().date({
         theme: "ios",      // Specify theme like: theme: 'ios' or omit setting to use default
         lang: "zh",    // Specify language like: lang: 'pl' or omit setting to use default
@@ -162,6 +174,7 @@ $(function(){
     info_inputers.css({'color':colors[0].color,'border':'1px solid'+colors[0].color});
     nick_name.addClass(colors[0].type);
     copyright.addClass(colors[0].type);
+    developer_info_container.addClass(colors[0].type);
     generate_info_page.addClass(colors[0].type+"_back");
     generate_btn.css('background',colors[0].color);
     generate_btn.on('click',function(){

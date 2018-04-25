@@ -17,7 +17,20 @@
     </script>
 </head>
 <body>
+    <div class="oMask"></div>
     <span class="font_hk">无悔</span>
+    <div class="developer_info_container">
+        <div class="relative_ghost">
+            <span class="close_btn"> X </span>
+            <p class="info_title">开发人员信息</p>
+            <p class="info_list">产品设计：杨奇凡</p>
+            <p class="info_list">视觉设计：游红岩</p>
+            <p class="info_list">程序设计：周政&nbsp;&nbsp;&nbsp;</p>
+            <p class="info_list">指导老师：杨奇凡</p>
+            <p class="info_list">出品：红岩网校工作站</p>
+            <p class="tips">部分设计素材来源于网络</p>
+        </div>
+    </div>
     <img src="__PUBLIC__/img/loading.gif" alt="" class="loading">
     <div id="generate_info_page">
         <img src="__PUBLIC__/img/flag.png" alt="" class="flag">
@@ -30,10 +43,10 @@
         <p class="nick_name">{$nickname}</p>
         <div class="info_inputer">
             <span class="first_capion">请填写你的姓名或网名</span><br>
-            <input type="text" class="name_inputer" value="{$nickname}"><br>
+            <input type="text" class="name_inputer" value="" maxlength="7"><br>
             <span class="second_capion">请填写入团时间或从事团学工作时间</span>
             <div class="date_container">
-                <input type="text" id="date_selector" readonly placeholder="点击选择日期">
+                <input type="text" id="date_selector" readonly>
                 <input type="text" id="date_ghost">
             </div>
         </div>
