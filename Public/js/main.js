@@ -76,7 +76,6 @@ poster.prototype.drawText = function(){
     var generate_img = new Image();
     var _imgSrc = this.canvas.toDataURL("image/png",1);
     generate_img.src = _imgSrc;
-    console.log(1);
     generate_img.onload = function(){
         $(_this.canvas).hide();
         $('#canvas_page').append($(this));
@@ -132,7 +131,28 @@ $(function(){
     var date_selector = $('#date_selector');
     var copyright = $('.copyright');
     var colors = [{'type':'blue','color':'#4396de'},{'type':'red','color':'#dc4c47'},{'type':'yellow','color':'#ecb61a'},{'type':'purple','color':'#874ad3'},{'type':'green','color':'#3fc94b'}];
-    var imgs = [{'src':public_path+"img/tuan_logo.png",'width':w*0.19,'height':w*0.19,'x':w*0.18,'y':h*0.25,'type':'tuan'},{'src':public_path+"img/flag.png",'width':w*0.152,'height':h*0.045,'x':w*0.04,'y':h*0.026,'type':'flag'},{'src':public_path+"img/code.jpg",'width':w*0.213,'height':w*0.213,'x':w*0.7386,'y':h*0.83,'type':'code'}];
+    var imgs = [{
+        'src': public_path + "img/tuan_logo.png",
+        'width': w * 0.19,
+        'height': w * 0.19,
+        'x': w * 0.18,
+        'y': h * 0.25,
+        'type': 'tuan'
+    }, {
+        'src': public_path + "img/flag.png",
+        'width': w * 0.152,
+        'height': h * 0.045,
+        'x': w * 0.04,
+        'y': h * 0.026,
+        'type': 'flag'
+    }, {
+        'src': public_path + "img/code.jpg",
+        'width': w * 0.213,
+        'height': w * 0.213,
+        'x': w * 0.7386,
+        'y': h * 0.83,
+        'type': 'code'
+    }];
     var ghost_date = $('#date_ghost');
     var _data = {};
     var loading = $('.loading');

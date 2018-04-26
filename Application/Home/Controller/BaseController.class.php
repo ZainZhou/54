@@ -24,10 +24,14 @@ class BaseController extends Controller {
         $users = M('users');
         $num = $users->where(array('openid' => $openid))->count();
         if ($num == 0) {
+            $avatar = urldecode(I('get.headimgurl'));
+            $avatar = explode('/',$avatar);
+            $avatar[2] = 'wx.idsbllp.cn/wechat_image';
+            $avatar = implode('/', $avatar);
             $data = array(
                 'openid' => $openid,
                 'nickname' => $nickname,
-                'imgurl' => urldecode(I('get.headimgurl')),
+                'imgurl' => $avatar,
             );
             $users->add($data);
         } else {
@@ -35,6 +39,11 @@ class BaseController extends Controller {
             if ($nickname && $img) {
                 $data['nickname'] = $nickname;
                 $data['imgurl'] = urldecode($img);
+                $avatar = $data['imgurl'];
+                $avatar = explode('/',$avatar);
+                $avatar[2] = 'wx.idsbllp.cn/wechat_image';
+                $avatar = implode('/', $avatar);
+                $data['imgurl'] = $avatar;
                 $users->where(array('openid' => $openid))->save($data);
             }
         }
