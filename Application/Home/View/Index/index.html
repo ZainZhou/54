@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>逐梦新时代,我们的青春宣言书</title>
+    <title>逐梦新时代，我们的青春宣言书</title>
     <link rel="stylesheet" href="__PUBLIC__/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="__PUBLIC__/css/mobiscroll.custom-3.0.0-beta2.min.css">
     <script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
     <script src="__PUBLIC__/js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
-    <script src="__PUBLIC__/js/main.js"></script>
+    <script src="__PUBLIC__/js/main.js?v=3"></script>
     <script>
         var avatar_src = "{$avatar}";
         var public_path = "__PUBLIC__/";
@@ -58,5 +58,33 @@
     <div id="canvas_page" style="display: none">
 
     </div>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://wx.idsbllp.cn/api/share.js"></script>
+    <script>
+        WXSHARE.config({debug: false});
+        WXSHARE.ready(function() {
+            var option = {
+                title: '逐梦新时代，我们的青春宣言书',
+                link: window.location.href,
+                imgUrl: 'https://wx.idsbllp.cn/game/54/Public/img/tuan_logo.png?v=1',
+                desc: '逐梦新时代，我们的青春宣言书',
+                type: '',
+                success: function() {
+                    console.log('分享成功');
+                },
+                cancel: function() {
+                    console.log('取消分享');
+                },
+            };
+
+            wx.onMenuShareTimeline(option);
+            wx.onMenuShareAppMessage(option);
+            wx.onMenuShareQQ(option);
+            wx.onMenuShareWeibo(option);
+            wx.onMenuShareQZone(option);
+
+        });
+
+    </script>
 </body>
 </html>

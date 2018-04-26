@@ -132,7 +132,28 @@ $(function(){
     var date_selector = $('#date_selector');
     var copyright = $('.copyright');
     var colors = [{'type':'blue','color':'#4396de'},{'type':'red','color':'#dc4c47'},{'type':'yellow','color':'#ecb61a'},{'type':'purple','color':'#874ad3'},{'type':'green','color':'#3fc94b'}];
-    var imgs = [{'src':public_path+"img/tuan_logo.png",'width':w*0.2,'height':w*0.2,'x':w*0.175,'y':h*0.245,'type':'tuan'},{'src':public_path+"img/flag.png",'width':w*0.152,'height':h*0.045,'x':w*0.04,'y':h*0.026,'type':'flag'},{'src':public_path+"img/code.jpg",'width':w*0.213,'height':w*0.213,'x':w*0.7386,'y':h*0.83,'type':'code'}];
+    var imgs = [{
+        'src': public_path + "img/tuan_logo.png",
+        'width': w * 0.19,
+        'height': w * 0.19,
+        'x': w * 0.18,
+        'y': h * 0.25,
+        'type': 'tuan'
+    }, {
+        'src': public_path + "img/flag.png",
+        'width': w * 0.152,
+        'height': h * 0.045,
+        'x': w * 0.04,
+        'y': h * 0.026,
+        'type': 'flag'
+    }, {
+        'src': public_path + "img/code.jpg",
+        'width': w * 0.213,
+        'height': w * 0.213,
+        'x': w * 0.7386,
+        'y': h * 0.83,
+        'type': 'code'
+    }];
     var ghost_date = $('#date_ghost');
     var _data = {};
     var loading = $('.loading');
@@ -182,7 +203,7 @@ $(function(){
         var name_inputer = $('.name_inputer');
         if(name_inputer.val() == ""){
             alert("姓名或网名不能为空!");
-            return false
+            return false;
         }
         loading.show();
         _data.username = name_inputer.val();

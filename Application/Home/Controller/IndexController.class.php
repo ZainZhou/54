@@ -1,6 +1,6 @@
 <?php
 namespace Home\Controller;
-use Org\Util\String;
+use Org\Util\TPString;
 use Org\Util\Date;
 
 class IndexController extends BaseController {
@@ -30,7 +30,9 @@ class IndexController extends BaseController {
         $strs = array(
             '操你妈',
             '妈的',
-            '我日'
+            '我日',
+            '日你妈',
+            '傻逼',
         );
         foreach ($strs as $str) {
             if (stripos($username, $str) !== false) {
@@ -56,7 +58,7 @@ class IndexController extends BaseController {
     }
 
     public function JSSDKSignature(){
-        $string = new String();
+        $string = new TPString();
         $jsapi_ticket =  $this->getTicket();
         $data['jsapi_ticket'] = $jsapi_ticket['data'];
         $data['noncestr'] = $string->randString();
@@ -108,27 +110,7 @@ class IndexController extends BaseController {
             'secret'=>$secret,
             'token'=>$this->acess_token,
         );
-        $url = "http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket";
+        $url = "https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket";
         return $this->curl_api($url, $t2);
-    }
-
-    public function addtestdata(){
-        $string = new String();
-        $users = M('users');
-        $ucq = M('user_current_question');
-        for ($i=0;$i<120;$i++) {
-            $openid = $string->randString();
-            $score = rand(0, 100);
-            $data1 = array(
-                'openid' => $openid,
-                'nickname' => '周老板'.$score,
-                'score' => $score
-            );
-            $data2 = array(
-                'openid' => $openid
-            );
-            $users->add($data1);
-            $ucq->add($data2);
-        }
     }
 }
