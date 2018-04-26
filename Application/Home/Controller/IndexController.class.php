@@ -108,7 +108,7 @@ class IndexController extends BaseController {
             'secret'=>$secret,
             'token'=>$this->acess_token,
         );
-        $url = "http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket";
+        $url = "http://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket";
         return $this->curl_api($url, $t2);
     }
 
