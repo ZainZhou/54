@@ -108,27 +108,7 @@ class IndexController extends BaseController {
             'secret'=>$secret,
             'token'=>$this->acess_token,
         );
-        $url = "http://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket";
+        $url = "https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/Api/Api/apiJsTicket";
         return $this->curl_api($url, $t2);
-    }
-
-    public function addtestdata(){
-        $string = new TPString();
-        $users = M('users');
-        $ucq = M('user_current_question');
-        for ($i=0;$i<120;$i++) {
-            $openid = $string->randString();
-            $score = rand(0, 100);
-            $data1 = array(
-                'openid' => $openid,
-                'nickname' => '周老板'.$score,
-                'score' => $score
-            );
-            $data2 = array(
-                'openid' => $openid
-            );
-            $users->add($data1);
-            $ucq->add($data2);
-        }
     }
 }
