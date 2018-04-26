@@ -26,7 +26,7 @@ class BaseController extends Controller {
         if ($num == 0) {
             $avatar = urldecode(I('get.headimgurl'));
             $avatar = explode('/',$avatar);
-            $avatar[0] = 'https';
+            $avatar[0] = 'https:';
             $avatar[2] = 'wx.idsbllp.cn/wechat_image';
             $avatar = implode('/', $avatar);
             $data = array(
@@ -42,7 +42,7 @@ class BaseController extends Controller {
                 $data['imgurl'] = urldecode($img);
                 $avatar = $data['imgurl'];
                 $avatar = explode('/',$avatar);
-                $avatar[0] = 'https';
+                $avatar[0] = 'https:';
                 $avatar[2] = 'wx.idsbllp.cn/wechat_image';
                 $avatar = implode('/', $avatar);
                 $data['imgurl'] = $avatar;
