@@ -30,7 +30,9 @@ class IndexController extends BaseController {
         $strs = array(
             '操你妈',
             '妈的',
-            '我日'
+            '我日',
+            '日你妈',
+            '傻逼',
         );
         foreach ($strs as $str) {
             if (stripos($username, $str) !== false) {
