@@ -30,6 +30,7 @@ poster.prototype.loadImgs = function(){
         _this.imgs[i].src = img.src;
         img.onload = function(){
             counter++;
+            console.log(this);
             for(var i = 0 ; i < _this.imgs.length ; i++){
                 if(_this.imgs[i].src == this.src){
                     _this.imgs[i].src = this;
@@ -66,9 +67,9 @@ poster.prototype.drawText = function(){
     h = this.drawLongText("青 春 宣 言 书",this.width/2,h,this.width,"fantasy",81,this.color,"center");
     h = this.drawLongText(this.texts.keyword,this.width/2,this.height*0.265,this.width,"hkh",70,this.color,"center");
     h = this.drawLongText('我的青春与"团团"一起奋斗!',this.width/2,h*1.12,this.width,"mw",45,this.color,"center");
-    h = this.drawLongText(this.texts.event+"今天是我们相识的:",this.width*0.09,h*1.04,this.width*0.84-15,"fz",32,this.color,"left");
-    h = this.drawLongText("第 "+this.texts.days+" 天",this.width/2,h*1.025,this.width,"Microsoft Yahei",55,this.color,"center");
-    h = this.drawLongText("未来,我们一定勠力同心!",this.width/2,this.height*0.674,this.width,"mw",45,"#000000","center");
+    h = this.drawLongText(this.texts.event+"今天是我们相识的:",this.width*0.09,h*1.04,this.width*0.84-15,"syh",32,this.color,"left");
+    h = this.drawLongText("第 "+this.texts.days+" 天",this.width/2,h*1.05,this.width,"syh",55,this.color,"center");
+    h = this.drawLongText("未来,我们一定不忘初心!",this.width/2,this.height*0.674,this.width,"mw",45,"#000000","center");
     h = this.drawLongText(this.texts.oath,this.width*0.1,h*1.02,this.width*0.8,"Microsoft YaHei",32,"#000000","left");
     ctx.stroke();
     ctx.restore();
@@ -76,7 +77,6 @@ poster.prototype.drawText = function(){
     var generate_img = new Image();
     var _imgSrc = this.canvas.toDataURL("image/png",1);
     generate_img.src = _imgSrc;
-    console.log(1);
     generate_img.onload = function(){
         $(_this.canvas).hide();
         $('#canvas_page').append($(this));
@@ -132,7 +132,7 @@ $(function(){
     var date_selector = $('#date_selector');
     var copyright = $('.copyright');
     var colors = [{'type':'blue','color':'#4396de'},{'type':'red','color':'#dc4c47'},{'type':'yellow','color':'#ecb61a'},{'type':'purple','color':'#874ad3'},{'type':'green','color':'#3fc94b'}];
-    var imgs = [{'src':public_path+"img/tuan_logo.png",'width':w*0.19,'height':w*0.19,'x':w*0.18,'y':h*0.25,'type':'tuan'},{'src':public_path+"img/flag.png",'width':w*0.152,'height':h*0.045,'x':w*0.04,'y':h*0.026,'type':'flag'},{'src':public_path+"img/code.jpg",'width':w*0.213,'height':w*0.213,'x':w*0.7386,'y':h*0.83,'type':'code'}];
+    var imgs = [{'src':public_path+"img/tuan_logo.png",'width':w*0.2,'height':w*0.2,'x':w*0.175,'y':h*0.245,'type':'tuan'},{'src':public_path+"img/flag.png",'width':w*0.152,'height':h*0.045,'x':w*0.04,'y':h*0.026,'type':'flag'},{'src':public_path+"img/code.jpg",'width':w*0.213,'height':w*0.213,'x':w*0.7386,'y':h*0.83,'type':'code'}];
     var ghost_date = $('#date_ghost');
     var _data = {};
     var loading = $('.loading');
@@ -154,6 +154,7 @@ $(function(){
         display: "bottom",  // Specify display mode like: display: 'bottom' or omit setting to use default
         mode: "datetimeDate",         // More info about mode: https://docs.mobiscroll.com/3-0-0_beta2/datetime#!opt-mode
         min: new Date(1977,12),
+        max: new Date(2018,11),
         onSet: function (event, inst) {
             var date_str = $(this).val().split("/");
             var date = date_str[0]+"年"+date_str[1]+"月"+date_str[2]+"日";
@@ -178,12 +179,12 @@ $(function(){
     generate_info_page.addClass(colors[0].type+"_back");
     generate_btn.css('background',colors[0].color);
     generate_btn.on('click',function(){
-        loading.show();
         var name_inputer = $('.name_inputer');
         if(name_inputer.val() == ""){
             alert("姓名或网名不能为空!");
             return false
         }
+        loading.show();
         _data.username = name_inputer.val();
         $.post("/54/index.php/Home/Index/getcontent",_data,function(data){
             if(data.status == 200){
@@ -192,9 +193,11 @@ $(function(){
                 var texts = {'nickname':_data.username,'keyword':data.data.keyword,'event':data.data.event,'days':data.data.days,'oath':data.data.describe};
                 p.init(public_path+"img/generate_back/"+colors[0].type+".jpg",texts,color,imgs);
             }else if(data.status == 405){
-                alert("姓名或网名中存在敏感词,请重新输入!")
+                alert("姓名或网名中存在敏感词,请重新输入!");
+                loading.hide();
             }else{
                 alert(data.info);
+                loading.hide();
             }
         });
     });
