@@ -59,79 +59,32 @@
 
     </div>
     <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://wx.idsbllp.cn/api/share.js"></script>
     <script>
-        var shareTitle = '逐梦新时代，我们的青春宣言书';
-        var shareDesc = "逐梦新时代，我们的青春宣言书";
-        var shareURL = "https://wx.idsbllp.cn/game/54/index.php";
-        var shareImg = "https://wx.idsbllp.cn/game/54/Public/img/tuan_logo.png";
-        wx.config({
-            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-            appId: 'wx81a4a4b77ec98ff4', // 必填，公众号的唯一标识
-            timestamp: "{$signature['timestamp']}", // 必填，生成签名的时间戳
-            nonceStr: "{$signature['noncestr']}", // 必填，生成签名的随机串
-            signature: "{$signature['signature']}",// 必填，签名，见附录1
-            jsApiList: [
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage',
-                'onMenuShareQQ',
-                'onMenuShareQZone',
-                'hideAllNonBaseMenuItem'
-            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        WXSHARE.config({debug: false});
+        WXSHARE.ready(function() {
+            var option = {
+                title: '我正在参与"学习新名词 喜迎十九大"主题团日活动，你也加入吧!',
+                link: window.location.href,
+                imgUrl: 'https://wx.idsbllp.cn/game/19th/Public/images/beginXi.png?v=1',
+                desc: '重邮共青团喜迎十九大新媒体产品',
+                type: '',
+                success: function() {
+                    console.log('分享成功');
+                },
+                cancel: function() {
+                    console.log('取消分享');
+                },
+            };
+
+            wx.onMenuShareTimeline(option);
+            wx.onMenuShareAppMessage(option);
+            wx.onMenuShareQQ(option);
+            wx.onMenuShareWeibo(option);
+            wx.onMenuShareQZone(option);
+
         });
-        function initShare(shareTitle, shareDesc, shareURL, shareImg) {
-            wx.ready(function(){
-                wx.onMenuShareTimeline({
-                    title: shareDesc, // 分享标题
-                    link: shareURL,
-                    imgUrl: shareImg,
-                    success: function () {
-//                        alert('分享成功!');// 用户确认分享后执行的回调函数
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                    }
-                });
-                wx.onMenuShareAppMessage({
-                    title: shareTitle, // 分享标题
-                    desc: shareDesc, // 分享描述
-                    link: shareURL,
-                    imgUrl: shareImg,
-                    type: '', // 分享类型,music、video或link，不填默认为link
-                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                    success: function () {
-//                        alert('分享成功!');// 用户确认分享后执行的回调函数
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                    }
-                });
-                wx.onMenuShareQQ({
-                    title: shareTitle, // 分享标题
-                    desc: shareDesc, // 分享描述
-                    link: shareURL,
-                    imgUrl: shareImg,
-                    success: function () {
-//                        alert('分享成功!');// 用户确认分享后执行的回调函数
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                    }
-                });
-                wx.onMenuShareQZone({
-                    title: shareTitle, // 分享标题
-                    desc: shareDesc, // 分享描述
-                    link: shareURL,
-                    imgUrl: shareImg,
-                    success: function () {
-//                        alert('分享成功!');// 用户确认分享后执行的回调函数
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                    }
-                });
-            });
-        }
-        initShare(shareTitle, shareDesc, shareURL, shareImg);
+
     </script>
 </body>
 </html>
