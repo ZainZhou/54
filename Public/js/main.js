@@ -202,8 +202,9 @@ $(function(){
         var name_inputer = $('.name_inputer');
         if(name_inputer.val() == ""){
             alert("姓名或网名不能为空!");
-            return false
+            return false;
         }
+        loading.show();
         _data.username = name_inputer.val();
         $.post("/54/index.php/Home/Index/getcontent",_data,function(data){
             if(data.status == 200){
@@ -212,9 +213,11 @@ $(function(){
                 var texts = {'nickname':_data.username,'keyword':data.data.keyword,'event':data.data.event,'days':data.data.days,'oath':data.data.describe};
                 p.init(public_path+"img/generate_back/"+colors[0].type+".jpg",texts,color,imgs);
             }else if(data.status == 405){
-                alert("姓名或网名中存在敏感词,请重新输入!")
+                alert("姓名或网名中存在敏感词,请重新输入!");
+                loading.hide();
             }else{
                 alert(data.info);
+                loading.hide();
             }
         });
     });
