@@ -63,17 +63,16 @@ poster.prototype.drawText = function(){
     var h = 0;
     ctx.save();
     ctx.beginPath();
-    h = this.drawLongText(this.texts.nickname+"的",this.width/2,this.height/16,this.width,"fantasy",80,this.color,"center");
-    h = this.drawLongText("青 春 宣 言 书",this.width/2,h,this.width,"fantasy",81,this.color,"center");
-    h = this.drawLongText(this.texts.keyword,this.width/2,this.height*0.265,this.width,"hkh",70,this.color,"center");
-    h = this.drawLongText('我的青春与"团团"一起奋斗!',this.width/2,h*1.12,this.width,"mw",45,this.color,"center");
-    h = this.drawLongText(this.texts.event+"今天是我们相识的:",this.width*0.09,h*1.04,this.width*0.84-15,"syh",32,this.color,"left");
-    h = this.drawLongText("第 "+this.texts.days+" 天",this.width/2,h*1.05,this.width,"syh",55,this.color,"center");
-    h = this.drawLongText("未来,我们一定不忘初心!",this.width/2,this.height*0.674,this.width,"mw",45,"#000000","center");
-    h = this.drawLongText(this.texts.oath,this.width*0.1,h*1.02,this.width*0.8,"Microsoft YaHei",32,"#000000","left");
+    h = this.drawLongText(this.texts.nickname+"的",this.width/2,this.height/16,this.width,"bold 80px Microsoft YaHei",80,this.color,"center");
+    h = this.drawLongText("青 春 宣 言 书",this.width/2,h,this.width,"bold 81px Microsoft YaHei",81,this.color,"center");
+    h = this.drawLongText(this.texts.keyword,this.width/2,this.height*0.265,this.width,"70px hkh",70,this.color,"center");
+    h = this.drawLongText('我的青春与"团团"一起奋斗!',this.width/2,h*1.12,this.width,"45px mw",45,this.color,"center");
+    h = this.drawLongText(this.texts.event+"今天是我们相识的:",this.width*0.09,h*1.04,this.width*0.84-15,"32px Microsoft YaHei",32,this.color,"left");
+    h = this.drawLongText("第 "+this.texts.days+" 天",this.width/2,h*1.05,this.width,"55px Microsoft YaHei",55,this.color,"center");
+    h = this.drawLongText("未来,我们一定不忘初心!",this.width/2,this.height*0.674,this.width,"45px mw",45,"#000000","center");
+    h = this.drawLongText(this.texts.oath,this.width*0.1,h*1.02,this.width*0.8,"32px Microsoft YaHei",32,"#000000","left");
     ctx.stroke();
     ctx.restore();
-    console.log(1);
     var generate_img = new Image();
     var _imgSrc = this.canvas.toDataURL("image/png",1);
     generate_img.src = _imgSrc;
@@ -85,12 +84,12 @@ poster.prototype.drawText = function(){
         $('.loading').hide();
     }
 };
-poster.prototype.drawLongText = function(t,x,y,w,f,p,c,a){
+poster.prototype.drawLongText = function(t,x,y,w,s,p,c,a){
     var ctx = this.canvas.getContext('2d');
     var chr = t.split("");
     var temp = "";
     var row = [];
-    var font = p+"px"+" "+f;
+    var font = s;
     ctx.save();
     ctx.beginPath();
     ctx.font = font;
@@ -161,6 +160,7 @@ $(function(){
     var developer_info_container = $('.developer_info_container');
     var close_btn = $('.close_btn');
     var developer_info = $('.developer_info');
+    var save_tip = $('.save_tip');
     developer_info.on('click',function(){
         developer_info_container.show();
         oMask.show();
@@ -196,6 +196,7 @@ $(function(){
     info_inputers.css({'color':colors[0].color,'border':'1px solid'+colors[0].color});
     nick_name.addClass(colors[0].type);
     copyright.addClass(colors[0].type);
+    save_tip.addClass(colors[0].type);
     developer_info_container.addClass(colors[0].type);
     generate_info_page.addClass(colors[0].type+"_back");
     generate_btn.css('background',colors[0].color);
