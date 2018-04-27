@@ -10,12 +10,6 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: 'syh';
-  src: url('../fonts/my.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
 * {
   padding: 0;
   margin: 0;
@@ -144,8 +138,7 @@ body {
 }
 #generate_info_page .info_title span {
   display: inline-block;
-  font-family: "syh";
-  font-weight: bold;
+  font-family: "Microsoft YaHei";
 }
 #generate_info_page .info_title .first_l {
   font-size: 2.6em;
@@ -179,6 +172,7 @@ body {
   display: inline-block;
   font-size: 0.55em;
   padding: 0.2em 0;
+  width: 100%;
 }
 #generate_info_page .info_inputer input {
   font-size: 13px;
@@ -202,8 +196,8 @@ body {
   border: none;
 }
 #generate_info_page #date_ghost {
-  padding: 0.5em 2%;
-  width: 96%;
+  padding: 0.59em 3%;
+  width: 94%;
   border-radius: 8px;
   margin-bottom: 0.8em;
   position: absolute;
@@ -218,7 +212,7 @@ body {
   line-height: 35px;
   border-radius: 7px;
   margin: 0 auto;
-  font-family: syh;
+  font-family: "Microsoft YaHei";
   margin-top: 70px;
   color: #ffffff;
   font-size: 17px;
@@ -237,6 +231,14 @@ body {
 #canvas_page {
   width: 100%;
   overflow: hidden;
+  position: relative;
+}
+#canvas_page .save_tip {
+  position: absolute;
+  top: 96%;
+  left: 15px;
+  font-size: 15px;
+  font-family: "Microsoft YaHei";
 }
 #canvas_page canvas {
   display: block;
@@ -285,5 +287,34 @@ body {
   }
   #generate_info_page .info_title .second_l {
     font-size: 2.7em;
+  }
+}
+@media (max-height: 530px) {
+  #generate_info_page .info_title .first_l {
+    font-size: 2em;
+  }
+  #generate_info_page .info_title .second_l {
+    font-size: 1.8em;
+  }
+  #generate_info_page .avatar {
+    margin: 0.9em auto;
+    width: 4.7em;
+    height: 4.7em;
+  }
+  .developer_info_container .relative_ghost .info_title {
+    padding: 4% 0;
+    font-weight: 400;
+  }
+  #generate_info_page .info_inputer {
+    margin-top: 0.2em;
+  }
+  #generate_info_page .info_inputer span {
+    font-size: 0.5em;
+  }
+  #generate_info_page .name_inputer {
+    margin-bottom: 0.45em;
+  }
+  #generate_info_page #generate_btn {
+    margin-top: 58px;
   }
 }
