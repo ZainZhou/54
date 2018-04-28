@@ -170,11 +170,6 @@ $(function(){
        developer_info_container.hide();
         oMask.hide();
     });
-    name_inputer.bind('input propertychange', function() {
-        if($(this).val().length > 6){
-            alert("亲,名字字数最多6个字哦!")
-        }
-    });
     ghost_date.mobiscroll().date({
         theme: "ios",      // Specify theme like: theme: 'ios' or omit setting to use default
         lang: "zh",    // Specify language like: lang: 'pl' or omit setting to use default
