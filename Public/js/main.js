@@ -130,6 +130,7 @@ $(function(){
     var developer_info = $('.developer_info');
     var date_selector = $('#date_selector');
     var copyright = $('.copyright');
+    var name_inputer = $('.name_inputer');
     var colors = [{'type':'blue','color':'#4396de'},{'type':'red','color':'#dc4c47'},{'type':'yellow','color':'#ecb61a'},{'type':'purple','color':'#874ad3'},{'type':'green','color':'#3fc94b'}];
     var imgs = [{
         'src': public_path + "img/tuan_logo.png",
@@ -168,6 +169,11 @@ $(function(){
     close_btn.on('click',function(){
        developer_info_container.hide();
         oMask.hide();
+    });
+    name_inputer.bind('input propertychange', function() {
+        if($(this).val().length > 6){
+            alert("亲,名字字数最多6个字哦!")
+        }
     });
     ghost_date.mobiscroll().date({
         theme: "ios",      // Specify theme like: theme: 'ios' or omit setting to use default
