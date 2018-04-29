@@ -130,6 +130,7 @@ $(function(){
     var developer_info = $('.developer_info');
     var date_selector = $('#date_selector');
     var copyright = $('.copyright');
+    var name_inputer = $('.name_inputer');
     var colors = [{'type':'blue','color':'#4396de'},{'type':'red','color':'#dc4c47'},{'type':'yellow','color':'#ecb61a'},{'type':'purple','color':'#874ad3'},{'type':'green','color':'#3fc94b'}];
     var imgs = [{
         'src': public_path + "img/tuan_logo.png",
