@@ -20,6 +20,12 @@ class IndexController extends BaseController {
     public function getcontent() {
         $time = I('post.time');
         $username = I('post.username');
+        if(is_null($time) || is_null($username) || $time == '' || $username == '') {
+            $this->ajaxReturn(array(
+                'status' => 400,
+                'info' => '非法数据'
+            ));
+        }
         $d = new Date($time);
         if ($d->parse($time) > time()){
            $this->ajaxReturn(array(
